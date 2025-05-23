@@ -1,6 +1,6 @@
 * {
-            margin: 0;
-            padding: 0;
+            margin: 0px;
+            padding: 0px;
             box-sizing: border-box;
         }
 
@@ -8,12 +8,16 @@
             background-color: #f4f6f8;
             color: #2c3e50;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            padding-bottom: 0px;
+            padding-top: 0px;
+            margin-bottom: 0px;
+            line-height: 1.20;
         }
 
         .container {
             width: 100%;
             padding: 2rem;
+            padding-bottom: 0px;
         }
 
         h1 {
@@ -32,7 +36,7 @@
             display: grid;
             grid-template-columns: 1fr 300px 1fr;
             gap: 3rem;
-            margin-bottom: 3rem;
+            margin-bottom: -40px;
         }
 
         .teams-section h3 {
@@ -49,9 +53,11 @@
         .team-card {
             background: #f9fbe7;
             border: 1px solid #dce775;
+            height: auto;
+            line-height: 15px;
             padding: 12px;
             border-radius: 8px;
-            margin: 8px 0;
+            margin: 2px;
         }
 
         .team-card strong {
@@ -152,11 +158,12 @@
             padding: 8px;
             border-radius: 6px;
             margin-bottom: 0px;
+            padding-bottom: 0px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 30px;
+            min-height: 50px;
             text-align: center;
         }
 
@@ -194,18 +201,19 @@
             background: #fff3e0;
             color: #ef6c00;
             margin: 135px auto;
+            margin-top:70px;
         }
 
         .semis-card {
             background: #e0f2f1;
             color: #00796b;
-            margin: 250px auto;
+            margin-top: 100px;
         }
 
         .final-card {
             background: #fff9c4;
             color: #fbc02d;
-            margin: 185px auto;
+            margin: 35px auto;
             padding: 20px;
             font-size: 16px;
         }

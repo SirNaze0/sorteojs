@@ -53,7 +53,7 @@
                     teamNameHtml = `<strong style="font-size: 0.8em;">${team.team_name}</strong>`;
                     teamCard.innerHTML = `
                         ${teamNameHtml}
-                        <small style="font-size: 0.7em;">Capitán: ${team.captain}</small>
+                        <small style="font-size: 0.68em;">Capitán: ${team.captain}</small>
                     `;
                 } else {
                     teamNameHtml = `<strong>${team.team_name}</strong>`;
@@ -75,7 +75,7 @@
 
                 let teamNameHtml;
                 if (team.team_name === 'Los Galácticos de la FISI') {
-                    teamNameHtml = `<strong style="font-size: 0.8em;">${team.team_name}</strong>`;
+                    teamNameHtml = `<strong style="font-size: 0.79em;">${team.team_name}</strong>`;
                     teamCard.innerHTML = `
                     ${teamNameHtml}
                     <small style="font-size: 0.7em;">Capitán: ${team.captain}</small>
