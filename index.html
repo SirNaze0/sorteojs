@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚽ Torneo FISI 2025</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>⚽ Sorteo Interbases FISI 2025</h1>
+        
+        <div class="main-section">
+            <!-- Equipos Izquierda -->
+            <div class="teams-section">
+                <h3>📋 Equipos Registrados</h3>
+                <div class="teams-grid" id="teams-left"></div>
+            </div>
+            
+            <!-- Sorteo Central -->
+            <div class="sorteo-section">
+                <h3>🎲 Sorteo</h3>
+                <button class="btn btn-sortear" id="btn-sortear">🎯 Sortear</button>
+                <button class="btn btn-reiniciar" id="btn-reiniciar">🔄 Reiniciar</button>
+            </div>
+            
+            <!-- Equipos Derecha -->
+            <div class="teams-section">
+                <h3>📋 Equipos Registrados</h3>
+                <div class="teams-grid" id="teams-right"></div>
+            </div>
+        </div>
+
+        <!-- Bracket -->
+        <div class="bracket-section">
+            <h2 class="bracket-title">🏆 Bracket del Torneo</h2>
+            <div class="bracket-container">
+                <!-- 8vos Izquierda -->
+                <div class="bracket-column">
+                    <h3>8vos de Final</h3>
+                    <div id="octavos-izq"></div>
+                </div>
+                
+                <!-- Cuartos Izquierda -->
+                <div class="bracket-column">
+                    <h3>Cuartos de Final</h3>
+                    <div class="spacer-40"></div>
+                    <div class="phase-card cuartos-card">
+                        <strong>Cuarto 1</strong><br>
+                        <small>Ganador Partido 1 vs Partido 2</small>
+                    </div>
+                    <div class="phase-card cuartos-card">
+                        <strong>Cuarto 2</strong><br>
+                        <small>Ganador Partido 3 vs Partido 4</small>
+                    </div>
+                </div>
+                
+                <!-- Semis Izquierda -->
+                <div class="bracket-column">
+                    <h3>Semifinales</h3>
+                    <div class="spacer-120"></div>
+                    <div class="phase-card semis-card">
+                        <strong>Semifinal 1</strong><br>
+                        <small>Ganador Cuarto 1 vs Cuarto 2</small>
+                    </div>
+                </div>
+                
+                <!-- Final -->
+                <div class="bracket-column">
+                    <h3>Final</h3>
+                    <div class="spacer-180"></div>
+                    <div class="phase-card final-card">
+                        <strong>🏆 FINAL 🏆</strong><br>
+                        <small>Ganador SF1 vs Ganador SF2</small>
+                    </div>
+                </div>
+                
+                <!-- Semis Derecha -->
+                <div class="bracket-column">
+                    <h3>Semifinales</h3>
+                    <div class="spacer-120"></div>
+                    <div class="phase-card semis-card">
+                        <strong>Semifinal 2</strong><br>
+                        <small>Ganador Cuarto 3 vs Cuarto 4</small>
+                    </div>
+                </div>
+                
+                <!-- Cuartos Derecha -->
+                <div class="bracket-column">
+                    <h3>Cuartos de Final</h3>
+                    <div class="spacer-40"></div>
+                    <div class="phase-card cuartos-card">
+                        <strong>Cuarto 3</strong><br>
+                        <small>Ganador Partido 5 vs Partido 6</small>
+                    </div>
+                    <div class="phase-card cuartos-card">
+                        <strong>Cuarto 4</strong><br>
+                        <small>Ganador Partido 7 vs Partido 8</small>
+                    </div>
+                </div>
+                
+                <!-- 8vos Derecha -->
+                <div class="bracket-column">
+                    <h3>8vos de Final</h3>
+                    <div id="octavos-der"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
