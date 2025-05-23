@@ -269,3 +269,7 @@
                 padding: 1rem;
             }
         }
+        .team-card.sorted {
+            background-color: #d1e7dd; /* Verde claro */
+            border: 2px solid #0f5132;
+        }

@@ -41,55 +41,70 @@
 
         // Renderizar equipos
         function renderTeams() {
-            // Primeros 8 equipos a la izquierda
-            teamsLeft.innerHTML = '';
-            for (let i = 0; i < 8; i++) {
-                const team = teams[i];
-                const teamCard = document.createElement('div');
-                teamCard.className = 'team-card';
+    // Obtener nombres ya sorteados
+    const sortedNames = bracketPositions.filter(pos => pos !== null).map(team => team.team_name);
 
-                let teamNameHtml;
-                if (team.team_name === 'Manchester FISI') {
-                    teamNameHtml = `<strong style="font-size: 0.8em;">${team.team_name}</strong>`;
-                    teamCard.innerHTML = `
-                        ${teamNameHtml}
-                        <small style="font-size: 0.68em;">Capitán: ${team.captain}</small>
-                    `;
-                } else {
-                    teamNameHtml = `<strong>${team.team_name}</strong>`;
-                    teamCard.innerHTML = `
-                        ${teamNameHtml}
-                        <small>Capitán: ${team.captain}</small>
-                    `;
-                }
+    // Primeros 8 equipos a la izquierda
+    teamsLeft.innerHTML = '';
+    for (let i = 0; i < 8; i++) {
+        const team = teams[i];
+        const teamCard = document.createElement('div');
+        teamCard.className = 'team-card';
 
-                teamsLeft.appendChild(teamCard);
-            }
-
-            // Últimos 8 equipos a la derecha
-            teamsRight.innerHTML = '';
-            for (let i = 8; i < teams.length; i++) {
-                const team = teams[i];
-                const teamCard = document.createElement('div');
-                teamCard.className = 'team-card';
-
-                let teamNameHtml;
-                if (team.team_name === 'Los Galácticos de la FISI') {
-                    teamNameHtml = `<strong style="font-size: 0.79em;">${team.team_name}</strong>`;
-                    teamCard.innerHTML = `
-                    ${teamNameHtml}
-                    <small style="font-size: 0.7em;">Capitán: ${team.captain}</small>
-                    `;
-                } else {
-                    teamNameHtml = `<strong>${team.team_name}</strong>`;
-                    teamCard.innerHTML = `
-                    ${teamNameHtml}
-                    <small>Capitán: ${team.captain}</small>
-                `;
-                }
-                teamsRight.appendChild(teamCard);
-            }
+        // Si ya fue sorteado, aplicar clase
+        if (sortedNames.includes(team.team_name)) {
+            teamCard.classList.add('sorted');
         }
+
+        let teamNameHtml;
+        if (team.team_name === 'Manchester FISI') {
+            teamNameHtml = `<strong style="font-size: 0.8em;">${team.team_name}</strong>`;
+            teamCard.innerHTML = `
+                ${teamNameHtml}
+                <small style="font-size: 0.68em;">Capitán: ${team.captain}</small>
+            `;
+        } else {
+            teamNameHtml = `<strong>${team.team_name}</strong>`;
+            teamCard.innerHTML = `
+                ${teamNameHtml}
+                <small>Capitán: ${team.captain}</small>
+            `;
+        }
+
+        teamsLeft.appendChild(teamCard);
+    }
+
+    // Últimos 8 equipos a la derecha
+    teamsRight.innerHTML = '';
+    for (let i = 8; i < teams.length; i++) {
+        const team = teams[i];
+        const teamCard = document.createElement('div');
+        teamCard.className = 'team-card';
+
+        // Si ya fue sorteado, aplicar clase
+        if (sortedNames.includes(team.team_name)) {
+            teamCard.classList.add('sorted');
+        }
+
+        let teamNameHtml;
+        if (team.team_name === 'Los Galácticos de la FISI') {
+            teamNameHtml = `<strong style="font-size: 0.79em;">${team.team_name}</strong>`;
+            teamCard.innerHTML = `
+                ${teamNameHtml}
+                <small style="font-size: 0.7em;">Capitán: ${team.captain}</small>
+            `;
+        } else {
+            teamNameHtml = `<strong>${team.team_name}</strong>`;
+            teamCard.innerHTML = `
+                ${teamNameHtml}
+                <small>Capitán: ${team.captain}</small>
+            `;
+        }
+
+        teamsRight.appendChild(teamCard);
+    }
+}
+
 
         // Crear tarjeta de equipo para el bracket
         function createTeamBracketCard(team) {
@@ -155,32 +170,30 @@
 
         // Sortear próximo equipo
         function sortearEquipo() {
-            // Obtener equipos ya sorteados
-            const sortedTeams = bracketPositions.filter(pos => pos !== null);
-            const sortedNames = sortedTeams.map(team => team.team_name);
-            
-            // Obtener equipos disponibles
-            const availableTeams = teams.filter(team => !sortedNames.includes(team.team_name));
-            
-            if (availableTeams.length === 0) return;
-            
-            // Encontrar primera posición vacía y asignar equipo aleatorio
-            for (let i = 0; i < bracketPositions.length; i++) {
-                if (bracketPositions[i] === null) {
-                    const randomIndex = Math.floor(Math.random() * availableTeams.length);
-                    bracketPositions[i] = availableTeams[randomIndex];
-                    break;
-                }
-            }
-            
-            // Verificar si todos los equipos han sido sorteados
-            if (bracketPositions.every(pos => pos !== null)) {
-                allSorted = true;
-                btnSortear.disabled = true;
-            }
-            
-            renderBracket();
+    const sortedTeams = bracketPositions.filter(pos => pos !== null);
+    const sortedNames = sortedTeams.map(team => team.team_name);
+
+    const availableTeams = teams.filter(team => !sortedNames.includes(team.team_name));
+    
+    if (availableTeams.length === 0) return;
+
+    for (let i = 0; i < bracketPositions.length; i++) {
+        if (bracketPositions[i] === null) {
+            const randomIndex = Math.floor(Math.random() * availableTeams.length);
+            bracketPositions[i] = availableTeams[randomIndex];
+            break;
         }
+    }
+
+    if (bracketPositions.every(pos => pos !== null)) {
+        allSorted = true;
+        btnSortear.disabled = true;
+    }
+
+    renderBracket();
+    renderTeams(); // ✅ Agregado para actualizar colores
+}
+
 
         // Reiniciar sorteo
         function reiniciar() {
@@ -188,6 +201,7 @@
             allSorted = false;
             btnSortear.disabled = false;
             renderBracket();
+            renderTeams();
         }
 
         // Inicializar cuando se carga la página
